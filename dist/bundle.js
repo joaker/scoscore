@@ -38695,7 +38695,7 @@
 	            { style: pstyle },
 	            'Step 3: Now you if your bland or ballistic for your tastes!  Great victory!'
 	        ),
-	        ' <placeholder> ' || _react2.default.createElement(
+	        ' <TBD> ' || _react2.default.createElement(
 	            'p',
 	            { style: pstyle },
 	            'On the ',

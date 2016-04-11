@@ -1,14 +1,19 @@
 
 // What are all the args, including the context args?
+console.log('application arguments:')
 console.log(process.argv);
 
 // What are the user args?
 var userArgs = process.argv.slice(2);
+console.log('user arguments');
+console.log(userArgs);
 
-var debugParam = userArgs && userArgs.length && userArgs[1];
+var debugParam = userArgs && userArgs.length && userArgs[0];
 
-const debugParameters = ['-d', '-D', '--debug'];
+const debugParameters = ['-d', '-D', '--debug', 'webpack'];
 var debugging = debugParameters.includes(debugParam);
+
+console.log('is debugging? ' + !!debugging);
 
 const path = require('path');
 const express = require('express');
@@ -37,7 +42,7 @@ if(debugging){ // If we're debugging, we're going to use a separate ports for we
 // We could write it out to a config file and have the client file import it
 fs.writeFile('./dist/config.js', 'portConfig = ' + JSON.stringify(configuration));
 
-const createPlainHttpServer = () => {
+const launchCombinedHttpServer = () => {
   const app = express();
 
   // Server the /dist directory
@@ -46,18 +51,30 @@ const createPlainHttpServer = () => {
   app.use(bodyParser.urlencoded({extended: false}));
   app.use(express.static(path.join(__dirname, 'public')));
 
-  return http.createServer(app);
+ const server = http.createServer(app);
+
+ ioserver.start(server); // Create the IO server with the content server
+ server.listen(port); // Start the combined server
+
 }
 
-import hotHttpServer from './servers/server';
+import hotServer from './servers/server';
 
-const server = debugging ? hotHttpServer : createPlainHttpServer();
+const launchHotHttpServer = () => {
 
+  console.log('Launching HOT http server')
 
-if(debugging){ // Start the config server and the http server separately
+  // grab the webpack server which will run separately
+  // const server = require('./servers/server');
+
   ioserver.start(); // Start the io server
-  server.start(); // Start the server according to the default configuration
-}else{ // Fold the http server into the IO server
-  ioserver.start(server); // Create the IO server with the content server
-  server.listen(port); // Start the combined server
+  hotServer.start(); // Start the server according to the default configuration
+}
+
+
+
+if(debugging) {
+  launchHotHttpServer();
+} else {
+  launchCombinedHttpServer();
 }

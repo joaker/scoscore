@@ -10,7 +10,7 @@
   "main": "server.js",
   "scripts": {
     "start": "babel-node index.js",
-    "debug": "babel-node index.js --debug",
+    "debug": "babel-node index.js webpack ",
     "server": "node server.js",
     "watch": "nodemon server.js"
   },

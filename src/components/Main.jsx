@@ -18,7 +18,7 @@ const Main = (props) => (
   <p style={pstyle}>
       Step 3: Now you if your bland or ballistic for your tastes!  Great victory!
   </p>
-{ ' <placeholder> ' ||
+{ ' <TBD3> ' ||
     <p style={pstyle}>
       On the <Link to={`/Venue`}>Venue Page</Link>, you may generate a large guest list to fill a venue, then use the provided tool to watch as the random distribution moves towards an optimal arrangement.  Please note that very best arrangement for a given guest list may have unavoidable conflicts
     </p>
