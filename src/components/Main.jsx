@@ -10,13 +10,13 @@ const Main = (props) => (
       Welcome!  Here's an application for rating spiciness
   </p>
   <p style={pstyle}>
-      Step 1: Calibrate your scoville range
+      Step 1: Rate hot sauces with known scoville scores
   </p>
   <p style={pstyle}>
-      Step 2: Compare spiciness rating to your scoville tolerance
+      Step 2: Rate the foods without scoville scores.  The scoville score will be estimated from past ratings
   </p>
   <p style={pstyle}>
-      Step 3: Now you if your bland or ballistic for your tastes!  Great victory!
+      Step 3: Now spice score tailored to your taste will be provided for new foods
   </p>
 { ' <TBD3> ' ||
     <p style={pstyle}>
