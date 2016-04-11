@@ -16,7 +16,7 @@ const Main = (props) => (
       Step 2: Rate the foods without scoville scores.  The scoville score will be estimated from past ratings
   </p>
   <p style={pstyle}>
-      Step 3: Now spice score tailored to your taste will be provided for new foods
+      Step 3: Now spiciness indicator will be provided for new foods based on actual or estimated scoville scores
   </p>
 { ' <TBD3> ' ||
     <p style={pstyle}>
