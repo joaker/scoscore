@@ -11,7 +11,7 @@
   "scripts": {
     "start": "babel-node index.js",
     "debug": "babel-node index.js webpack ",
-    "server": "node server.js",
+    "postinstall": "webpack -p --config ./webpack.config.js",
     "watch": "nodemon server.js"
   },
   "babel": {
