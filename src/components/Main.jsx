@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router'
+import cnames from 'classnames/dedupe'
 
 const pstyle = {marginBottom:'1.5em'};
 
@@ -18,11 +19,14 @@ const Main = (props) => (
   <p style={pstyle}>
       Step 3: Now spiciness indicator will be provided for new foods based on actual or estimated scoville scores
   </p>
-{ ' <TBD3> ' ||
+
+  <button className={cnames('btn btn-block btn-primary-outline')}>Get Started!</button>
+
+  { '' && 
     <p style={pstyle}>
       On the <Link to={`/Venue`}>Venue Page</Link>, you may generate a large guest list to fill a venue, then use the provided tool to watch as the random distribution moves towards an optimal arrangement.  Please note that very best arrangement for a given guest list may have unavoidable conflicts
     </p>
-}
+    }
   </div>
 );
 

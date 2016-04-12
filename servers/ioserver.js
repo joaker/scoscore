@@ -14,17 +14,17 @@ import logger from './logger';
 // import Guest from '../db/models/Guest';
 
 
-const nextRand = () => Math.round(Math.random() * 100);
-
-const rand1 = nextRand();
-const rand2 = nextRand();
-const rand3 = nextRand();
-console.log('adding examples <'+rand1+'>, <'+rand2+'>, <'+rand3+'>');
-
-const saveGuest = (err, guest) => {
-  if (err) return console.error(err);
-  console.log('saved guest: ' + guest.name);
-}
+// const nextRand = () => Math.round(Math.random() * 100);
+//
+// const rand1 = nextRand();
+// const rand2 = nextRand();
+// const rand3 = nextRand();
+// console.log('adding examples <'+rand1+'>, <'+rand2+'>, <'+rand3+'>');
+//
+// const saveGuest = (err, guest) => {
+//   if (err) return console.error(err);
+//   console.log('saved guest: ' + guest.name);
+// }
 
 // const rands = [rand1, rand2, rand3];
 // const robjects = rands.map(r => {
@@ -62,7 +62,12 @@ const ioserver = {
     }
 
 
-    const io = ioParam ? new Server(ioParam, config) : new Server().attach(ioport);
+    const chosenPort = ioParam || ioport;
+    const portWasProvided = !! ioParam;
+
+    logger('Chosen Port is: ' + chosenPort);
+
+    const io = portWasProvided ? new Server(chosenPort, config) : new Server().attach(chosenPort);
 
     logger('Starting IO server');
 

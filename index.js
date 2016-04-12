@@ -34,7 +34,9 @@ const configuration = {
 }
 
 if(debugging){ // If we're debugging, we're going to use a separate ports for webpack and socketio, so use that
-  ioClientLocation: ioClientLocation
+  console.log('DEBUG MODE - Setting client location:')
+  console.log(ioClientLocation)
+  configuration['ioClientLocation'] = ioClientLocation
 }
 
 
@@ -43,6 +45,7 @@ if(debugging){ // If we're debugging, we're going to use a separate ports for we
 fs.writeFile('./dist/config.js', 'portConfig = ' + JSON.stringify(configuration));
 
 const launchCombinedHttpServer = () => {
+  console.log('Launching COMBINED io server')
   const app = express();
 
   // Server the /dist directory

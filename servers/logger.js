@@ -6,6 +6,6 @@ const makeLogger = source => msg => {
   console.log(logMessage);
 };
 
-const defaultLogger = makeLogger('Seating');
+const defaultLogger = makeLogger('ScoScore');
 
 export default defaultLogger;
